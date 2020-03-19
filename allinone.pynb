@@ -1,0 +1,8 @@
+import requests
+import urllib
+import pandas
+g = urllib.request.urlopen('https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-03-13/all_sources_metadata_2020-03-13.csv')
+with open ('metadata.csv', 'b+w') as f:
+    f.write(g.read())
+df = pandas.read_csv('metadata.csv', usecols = ['sha', 'title', 'abstract', 'journal'])
+df.head(5)
